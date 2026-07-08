@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>Shahd&#39;s Island — A Summer We Kept</title>
+<meta name="description" content="A hand-crafted cinematic tropical journey made for Shahd." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Caveat:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <!-- SCROLL PROGRESS -->
+  <div id="progressBar" aria-hidden="true"><div id="progressFill"></div><div id="progressGlow"></div></div>
+
+  <!-- WAYFINDER GUIDE LIGHT (follows cursor, ocean-voyager touch) -->
+  <div id="wayfinder" aria-hidden="true"></div>
+
+  <!-- FILM GRAIN -->
+  <div id="grain" aria-hidden="true"></div>
+
+  <!-- BOOT / LOADER -->
+  <div id="boot" aria-hidden="false">
+    <div class="boot-shell">
+      <div class="boot-title">
+        <span class="boot-eyebrow">a summer we kept</span>
+        <h1>Shahd&#39;s Island</h1>
+        <p class="boot-sub">handcrafted for you — press to set sail</p>
+      </div>
+      <button id="setSail" class="setsail">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 2c3 3 5 7 5 11a5 5 0 0 1-10 0c0-4 2-8 5-11Z"/></svg>
+        <span>set sail</span>
+      </button>
+      <div class="boot-hint">audio on • best on desktop</div>
+    </div>
+    <div class="boot-wave" aria-hidden="true"></div>
+  </div>
+
+  <!-- FIXED CINEMATIC BACKDROP -->
+  <div id="stage" aria-hidden="true">
+    <canvas id="skyCanvas"></canvas>
+    <canvas id="oceanCanvas"></canvas>
+    <canvas id="particleCanvas"></canvas>
+    <div id="sunMoon"></div>
+    <div id="rainbow"></div>
+    <div id="vignette"></div>
+    <div id="flash"></div>
+  </div>
+
+  <!-- HUD -->
+  <header id="hud">
+    <div class="hud-left">
+      <button class="hud-btn" id="replayBtn" title="replay journey">
+        <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M12 5V2L7 6l5 4V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7Z"/></svg>
+      </button>
+      <div class="hud-clock"><span id="tod">morning</span></div>
+    </div>
+    <nav class="hud-nav" id="chapters" aria-label="chapters"></nav>
+    <div class="hud-right">
+      <div class="music" id="music">
+        <button class="hud-btn" id="mPrev" title="previous track">
+          <svg viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M6 6h2v12H6zm3.5 6 8.5 6V6z"/></svg>
+        </button>
+        <button class="hud-btn play" id="mPlay" title="play / pause">
+          <svg id="mPlayIcon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+        </button>
+        <button class="hud-btn" id="mNext" title="next track">
+          <svg viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M16 6h2v12h-2zM6 18l8.5-6L6 6z"/></svg>
+        </button>
+        <div class="track" id="mTrack">ukulele shores</div>
+        <input id="mVol" type="range" min="0" max="1" step="0.01" value="0.55" aria-label="volume">
+        <button class="hud-btn" id="mMute" title="mute">
+          <svg id="mMuteIcon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M3 10v4h4l5 4V6L7 10H3zm13.5 2a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- SCROLL JOURNEY -->
+  <main id="journey">
+    <!-- 8 scenes injected below -->
+    <section class="scene" data-scene="ocean" data-tod="morning" data-track="0">
+      <div class="scene-inner">
+        <div class="chapter-tag">chapter i</div>
+        <h2 class="scene-title">arrival at the ocean</h2>
+        <p class="scene-lede">the tide remembers your name, Shahd — it always did.</p>
+        <div class="floating-layer" data-layer="ocean-props"></div>
+        <div class="memory-anchors" data-scene-anchors="ocean"></div>
+      </div>
+    </section>
+
+    <section class="scene" data-scene="beach" data-tod="afternoon" data-track="0">
+      <div class="scene-inner">
+        <div class="chapter-tag">chapter ii</div>
+        <h2 class="scene-title">sunny beach</h2>
+        <p class="scene-lede">every grain of sand keeps a summer we forgot to end.</p>
+        <div class="floating-layer" data-layer="beach-props"></div>
+        <div class="memory-anchors" data-scene-anchors="beach"></div>
+      </div>
+    </section>
+
+    <section class="scene" data-scene="jungle" data-tod="afternoon" data-track="1">
+      <div class="scene-inner">
+        <div class="chapter-tag">chapter iii</div>
+        <h2 class="scene-title">tropical jungle</h2>
+        <p class="scene-lede">follow the parrots — they know which path leads to us.</p>
+        <div class="floating-layer" data-layer="jungle-props"></div>
+        <div class="memory-anchors" data-scene-anchors="jungle"></div>
+      </div>
+    </section>
+
+    <section class="scene" data-scene="waterfall" data-tod="afternoon" data-track="2">
+      <div class="scene-inner">
+        <div class="chapter-tag">chapter iv</div>
+        <h2 class="scene-title">crystal waterfall</h2>
+        <p class="scene-lede">the water speaks in the sound of our laughing.</p>
+        <div class="floating-layer" data-layer="waterfall-props"></div>
+        <div class="memory-anchors" data-scene-anchors="waterfall"></div>
+      </div>
+    </section>
+
+    <section class="scene" data-scene="cave" data-tod="golden" data-track="2">
+      <div class="scene-inner">
+        <div class="chapter-tag">chapter v</div>
+        <h2 class="scene-title">hidden cave</h2>
+        <p class="scene-lede">bring a torch. the walls are covered in inside jokes.</p>
+        <div class="floating-layer" data-layer="cave-props"></div>
+        <div class="memory-anchors" data-scene-anchors="cave"></div>
+      </div>
+    </section>
+
+    <section class="scene" data-scene="volcano" data-tod="golden" data-track="3">
+      <div class="scene-inner">
+        <div class="chapter-tag">chapter vi</div>
+        <h2 class="scene-title">volcano viewpoint</h2>
+        <p class="scene-lede">from up here even the horizon looks like a group chat.</p>
+        <div class="floating-layer" data-layer="volcano-props"></div>
+        <div class="memory-anchors" data-scene-anchors="volcano"></div>
+      </div>
+    </section>
+
+    <section class="scene" data-scene="sunset" data-tod="sunset" data-track="3">
+      <div class="scene-inner">
+        <div class="chapter-tag">chapter vii</div>
+        <h2 class="scene-title">sunset cliff</h2>
+        <p class="scene-lede">the sky is trying to imitate the way you laugh.</p>
+        <div class="floating-layer" data-layer="sunset-props"></div>
+        <div class="memory-anchors" data-scene-anchors="sunset"></div>
+      </div>
+    </section>
+
+    <section class="scene finale" data-scene="starry" data-tod="night" data-track="4">
+      <div class="scene-inner">
+        <div class="chapter-tag">chapter viii</div>
+        <h2 class="scene-title">starry beach — finale</h2>
+        <p class="scene-lede">stay a little longer. the island is not done showing off for you.</p>
+        <div class="floating-layer" data-layer="starry-props"></div>
+        <div class="memory-anchors" data-scene-anchors="starry"></div>
+        <button id="openChest" class="chest-btn" aria-label="open the treasure chest">
+          <span>open the treasure chest</span>
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <!-- MEMORY LIGHTBOX -->
+  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-modal="true">
+    <button class="lb-close" id="lbClose" aria-label="close">×</button>
+    <div class="lb-stage">
+      <div class="lb-media" id="lbMedia"></div>
+      <div class="lb-meta">
+        <div class="lb-when" id="lbWhen"></div>
+        <div class="lb-caption" id="lbCaption"></div>
+      </div>
+    </div>
+    <div class="lb-bg" data-close="1"></div>
+  </div>
+
+  <!-- LETTER PAPER -->
+  <div id="letter" class="letter" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="letter-bg" data-close="1"></div>
+    <article class="paper">
+      <button class="paper-close" id="letterClose" aria-label="close">×</button>
+      <div class="wax">S</div>
+      <h3 id="letterTitle">a letter for shahd</h3>
+      <div class="letter-body" id="letterBody"></div>
+      <div class="letter-sign" id="letterSign"></div>
+    </article>
+  </div>
+
+  <!-- MINIGAME LAYER -->
+  <div id="game" class="game" aria-hidden="true"></div>
+
+  <!-- FINALE -->
+  <div id="finale" class="finale-veil" aria-hidden="true">
+    <canvas id="fireCanvas"></canvas>
+    <div class="finale-inner">
+      <h2 class="finale-title">for shahd — always</h2>
+      <p class="finale-sub">thank you for every summer, and the ones still coming.</p>
+      <div class="finale-collage" id="finaleCollage"></div>
+      <button id="replayFinale" class="setsail small">replay the journey</button>
+    </div>
+  </div>
+
+  <!-- HINT -->
+  <div id="scrollHint" class="scroll-hint" aria-hidden="true">
+    <div class="mouse"><span></span></div>
+    <div>scroll to travel</div>
+  </div>
+
+  <!-- external libs -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+  <!-- app config + code -->
+  <script src="./config.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
