@@ -299,6 +299,7 @@ img{max-width:100%;display:block}
   gap:24px;margin:20px auto;min-height:60vh;
 }
 .chest-btn{
+  position:relative;z-index:30;cursor:pointer;pointer-events:auto;
   margin-top:40px;padding:18px 34px;border-radius:999px;
   background:linear-gradient(180deg,#f4c56d,#ff8a6b);
   color:#0a1620;font-weight:600;letter-spacing:.28em;text-transform:uppercase;font-size:12px;
@@ -481,7 +482,7 @@ img{max-width:100%;display:block}
 
 /* --- LETTER --- */
 .letter{
-  position:fixed;inset:0;z-index:210;display:none;
+  position:fixed;inset:0;z-index:230;display:none;
   align-items:center;justify-content:center;perspective:1600px;
 }
 .letter.open{display:flex}
